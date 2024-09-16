@@ -15,7 +15,6 @@ body {
   flex-direction: column;
   margin: 0;
   overflow: hidden;
-  /* Prevent scrolling on the body */
 }
 
 main {
@@ -23,7 +22,6 @@ main {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  /* Prevent scrolling on the main container */
 }
 main header {
   background-color: #2791cf;
@@ -51,7 +49,7 @@ main header button {
   cursor: pointer;
   display: none;
 }
-main div.container {
+main div.container-large {
   flex: 1;
   background-color: #7E878c;
   padding: 20px;
@@ -60,9 +58,8 @@ main div.container {
   justify-content: flex-start;
   align-items: stretch;
   overflow: hidden;
-  /* Prevent scrolling on the container */
 }
-main div.container div.users-window {
+main div.container-large div.users-window {
   width: 350px;
   color: #ffffff;
   background-color: #3f3f3f;
@@ -70,34 +67,84 @@ main div.container div.users-window {
   border-radius: 10px;
   margin-right: 20px;
 }
-main div.container div.users-window div.users-head {
+main div.container-large div.users-window div.users-head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
-main div.container div.users-window div.users-head h4 {
+main div.container-large div.users-window div.users-head h3 {
+  display: flex;
+  align-items: center;
+}
+main div.container-large div.users-window div.users-head h3 span#user-count {
   background-color: #7E878c;
   padding: 0 8px;
   border-radius: 50px;
+  margin-left: 10px;
 }
-main div.container div.users-window div.users-list p {
+main div.container-large div.users-window div.users-head button#add-user-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+main div.container-large div.users-window div.users-head button#add-user-button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+main div.container-large div.users-window .user-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+main div.container-large div.users-window .edit-user-button,
+main div.container-large div.users-window .remove-user-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: 10px;
+}
+main div.container-large div.users-window .edit-user-button:hover,
+main div.container-large div.users-window .remove-user-button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
+}
+main div.container-large div.users-window div.users-list p {
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   font-weight: 600;
   margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
-main div.container div.chat-big-window {
+main div.container-large div.users-window div.users-list p:hover {
+  background-color: #007bff;
+  color: black;
+}
+main div.container-large div.chat-big-window {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: stretch;
+  gap: 1rem;
   overflow: hidden;
-  /* Prevent scrolling on the chat-big-window */
 }
-main div.container div.chat-big-window div.chat-window {
+main div.container-large div.chat-big-window div.chat-window {
   flex: 1;
   width: 100%;
   border-radius: 10px;
@@ -109,38 +156,42 @@ main div.container div.chat-big-window div.chat-window {
   padding: 1rem;
   height: 100%;
 }
-main div.container div.chat-big-window div.chat-window img {
+main div.container-large div.chat-big-window div.chat-window img {
   width: 100%;
   height: auto;
   display: block;
 }
-main div.container div.chat-big-window div.user-input {
+main div.container-large div.chat-big-window div.container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  padding: 20px 20px 0 20px;
-}
-main div.container div.chat-big-window div.user-input input {
-  font-size: 16px;
   background-color: #ffffff;
-  padding: 10px 20px;
-  outline: none;
-  border: none;
-  width: 100%;
-  border-radius: 50px 0 0 50px;
+  padding: 20px 20px 0 20px;
+  box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
+  border-radius: 0.5em;
 }
-main div.container div.chat-big-window div.user-input button {
-  font-size: 16px;
-  font-weight: 500;
-  padding: 5px 15px;
-  border: none;
-  outline: none;
-  letter-spacing: 0.5px;
+main div.container-large div.chat-big-window div.container input[type=file] {
+  display: none;
+}
+main div.container-large div.chat-big-window div.container label {
+  display: block;
+  background-color: #025bee;
   color: #ffffff;
-  background-color: #2791cf;
-  border-radius: 0 50px 50px 0;
+  font-size: 1.1em;
+  text-align: center;
+  width: 16em;
+  padding: 1em 0;
+  border-radius: 0.3em;
+  margin: 0 auto 1em auto;
   cursor: pointer;
+}
+main div.container-large div.chat-big-window div.container #error {
+  text-align: center;
+  color: #ff3030;
+}
+main div.container-large div.chat-big-window .active {
+  border: 0.2em dashed #025bee;
 }
 
 footer {
@@ -169,10 +220,10 @@ footer a:hover {
   main header button {
     display: block;
   }
-  main div.container {
+  main div.container-large {
     position: relative;
   }
-  main div.container div.users-window {
+  main div.container-large div.users-window {
     position: absolute;
     top: 0;
     left: 0;

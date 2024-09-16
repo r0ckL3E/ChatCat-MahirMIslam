@@ -31,7 +31,7 @@ body {
     flex-direction: column;
     margin: 0;
     overflow: hidden;
-    /* Prevent scrolling on the body */
+
 }
 
 main {
@@ -39,7 +39,6 @@ main {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    /* Prevent scrolling on the main container */
 
     header {
         background-color: $light-blue;
@@ -65,13 +64,13 @@ main {
         }
     }
 
-    div.container {
+    div.container-large {
         flex: 1;
         background-color: $light-grey;
         padding: 20px;
         @include flexing(row, flex-start, stretch);
         overflow: hidden;
-        /* Prevent scrolling on the container */
+
 
         div.users-window {
             width: 350px;
@@ -85,11 +84,57 @@ main {
                 @include flexing(row, space-between, center);
                 margin-bottom: 15px;
 
-                h4 {
-                    background-color: $light-grey;
-                    padding: 0 8px;
-                    border-radius: 50px;
+                h3 {
+                    display: flex;
+                    align-items: center;
+
+                    span#user-count {
+                        background-color: $light-grey;
+                        padding: 0 8px;
+                        border-radius: 50px;
+                        margin-left: 10px;
+                    }
                 }
+
+                button#add-user-button {
+                    background-color: #007bff;
+                    color: #ffffff;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: background-color 0.3s, color 0.3s;
+                }
+
+                button#add-user-button:hover {
+                    background-color: #0056b3;
+                    color: #ffffff;
+                }
+            }
+
+            .user-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 15px;
+            }
+
+            .edit-user-button,
+            .remove-user-button {
+                background-color: #007bff;
+                color: #ffffff;
+                border: none;
+                padding: 5px 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+                margin-left: 10px;
+            }
+
+            .edit-user-button:hover,
+            .remove-user-button:hover {
+                background-color: #0056b3;
+                color: #ffffff;
             }
 
             div.users-list p {
@@ -97,14 +142,26 @@ main {
                 letter-spacing: 0.5px;
                 font-weight: 600;
                 margin-bottom: 15px;
+                padding: 10px;
+                width: 100%;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s, color 0.3s;
+
+                &:hover {
+                    background-color: #007bff;
+                    color: black;
+                }
             }
         }
 
         div.chat-big-window {
             flex: 1;
             @include flexing(column, flex-end, stretch);
+            gap: 1rem;
             overflow: hidden;
-            /* Prevent scrolling on the chat-big-window */
+
 
             div.chat-window {
                 flex: 1;
@@ -125,33 +182,41 @@ main {
                 }
             }
 
-            div.user-input {
+            div.container {
                 @include flexing(row, space-between, stretch);
+                background-color: #ffffff;
                 padding: 20px 20px 0 20px;
+                box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
+                border-radius: 0.5em;
 
-                input {
-                    font-size: $fsize;
-                    background-color: $white;
-                    padding: 10px 20px;
-                    outline: none;
-                    border: none;
-                    width: 100%;
-                    border-radius: 50px 0 0 50px;
+
+                input[type="file"] {
+                    display: none;
                 }
 
-                button {
-                    font-size: $fsize;
-                    font-weight: 500;
-                    padding: 5px 15px;
-                    border: none;
-                    outline: none;
-                    letter-spacing: 0.5px;
-                    color: $white;
-                    background-color: $light-blue;
-                    border-radius: 0 50px 50px 0;
+                label {
+                    display: block;
+                    background-color: #025bee;
+                    color: #ffffff;
+                    font-size: 1.1em;
+                    text-align: center;
+                    width: 16em;
+                    padding: 1em 0;
+                    border-radius: 0.3em;
+                    margin: 0 auto 1em auto;
                     cursor: pointer;
                 }
+
+                #error {
+                    text-align: center;
+                    color: #ff3030;
+                }
             }
+
+            .active {
+                border: 0.2em dashed #025bee;
+            }
+
         }
     }
 }
@@ -189,7 +254,7 @@ footer {
             }
         }
 
-        div.container {
+        div.container-large {
             position: relative;
 
             div.users-window {
