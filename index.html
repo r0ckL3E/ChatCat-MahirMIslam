@@ -17,31 +17,40 @@
 <body>
 
     <main>
+        <!-- Header information -->
         <header>
             <div class="title">
                 <img src="icons/vecteezy_cat-chat-logo-cat-talk-forum-discussion-logo-cat-shape_-2.png" width="60px">
                 <h1>ChatCat</h1>
             </div>
 
+            <!-- Menu Button for user profiles when the window is minimised -->
             <button type="button" onclick="show_hide()">
                 <img src="icons/icons8-menu.svg" width="45px">
             </button>
         </header>
 
+        <!-- Section for profile tab, chat window and drop box uploader -->
         <div class="container-large">
             <div class="users-window">
+
+
+                <!-- Future Development -->
                 <div class="users-head">
-                    <h3>People <span id="user-count">1</span></h3>
-                    <button id="add-user-button">Add User</button>
+                    <!-- <h3>People <span id="user-count">0</span></h3>
+                    <button id="add-user-button">Add User</button> -->
                 </div>
+
+
+                <!-- User profile list, currently there is only one user that is coded into the users-list class -->
                 <div class="users-list">
-                    <div class="user-item">
-                        <p id="user-myprofile">My Profile</p>
-                    </div>
+                    <p id="user-myprofile">My Profile</p>
                 </div>
             </div>
 
-            <script>
+
+            <!-- Future Development -->
+            <!-- <script>
                 document.addEventListener("DOMContentLoaded", () => {
                     const usersList = document.querySelector(".users-list");
                     const addUserButton = document.getElementById("add-user-button");
@@ -101,74 +110,34 @@
                         }
                     });
 
-                    // Add edit and remove functionality to existing user
-                    const existingUser = document.getElementById("user-myprofile");
-                    const editButton = document.createElement("button");
-                    editButton.className = "edit-user-button";
-                    editButton.textContent = "Edit";
-                    editButton.addEventListener("click", () => editUser(existingUser));
-
-                    const removeButton = document.createElement("button");
-                    removeButton.className = "remove-user-button";
-                    removeButton.textContent = "Remove";
-                    removeButton.addEventListener("click", () => removeUser(existingUser.parentElement));
-
-                    existingUser.parentElement.appendChild(editButton);
-                    existingUser.parentElement.appendChild(removeButton);
-
                     // Initial user count update
                     updateUserCount();
                 });
-            </script>
+            </script> -->
 
+
+            <!-- Section for chat window and drop box uploader -->
             <div class="chat-big-window">
                 <div class="chat-window" id="chat-window">
                 </div>
 
+                <!-- Section for drop box uploader and its corresponding pieces -->
                 <div class="container">
                     <input type="file" id="upload-button" multiple accept="image/*" />
                     <label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
                     </label>
                     <div id="error"></div>
-                    <div id="image-display"></div>
                 </div>
 
-                <script src="script.js"></script>
+                <!-- Script for uploading, displaying and saving the pictures -->
+                <script src="./scripts/chatScript.js"></script>
             </div>
 
         </div>
 
-        </div>
 
-        <script>
-            var uwindow = document.querySelector('.users-window');
-        
-            function show_hide() {
-                if (uwindow.style.display === "block") {
-                    uwindow.style.display = "none";
-                } else {
-                    uwindow.style.display = "block";
-                }
-            }
-        
-            function handleResize() {
-                if (window.innerWidth > 900) {
-                    uwindow.style.display = "block";
-                } else {
-                    uwindow.style.display = "none";
-                }
-            }
-        
-            function handleMouseLeave() {
-                if (window.innerWidth <= 900) {
-                    uwindow.style.display = "none";
-                }
-            }
-        
-            window.addEventListener('resize', handleResize);
-            window.addEventListener('load', handleResize);
-            uwindow.addEventListener('mouseleave', handleMouseLeave);
-        </script>
+        <!-- Script for the chat window to vanish and act as a pop up menu when the window gets minimised -->
+        <script src="./scripts/vanishWindow.js"></script>
     </main>
 
     <footer>
