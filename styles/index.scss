@@ -14,6 +14,24 @@ $fsize: 16px;
     align-items: $ai;
 }
 
+
+/* Keyframe animations for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply the fade-in animation to all elements */
+body, header, .container-large, .users-window, .chat-big-window, .container, footer {
+    animation: fadeIn 1s ease-in-out;
+}
+
 * {
     margin: 0;
     padding: 0;
