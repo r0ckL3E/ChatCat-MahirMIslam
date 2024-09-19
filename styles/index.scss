@@ -15,7 +15,6 @@ $fsize: 16px;
 }
 
 
-/* Keyframe animations for fade-in effect */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -38,12 +37,11 @@ $fsize: 16px;
     }
 }
 
-/* Apply the fade-in animation to all elements */
 body, header, .container-large, .users-window, .chat-big-window, .container, footer {
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Apply the fade-in-from-top animation to the users-window element */
+
 .users-window {
     animation: fadeInFromTop 1s ease-in-out;
 }
