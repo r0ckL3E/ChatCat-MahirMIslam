@@ -254,36 +254,26 @@ window.onload = async () => {
     });
 };
 
+// Download all images as ZIP
+document.getElementById('download-zip-button').addEventListener('click', async () => {
+    const zip = new JSZip();
+    const imagesFolder = zip.folder("images");
 
+    // Open the database and load images
+    await openDB();
+    const images = await loadImagesFromDB();
 
-            // Get reference to the users window element
-            var uwindow = document.querySelector('.users-window');
+    // Add each image to the ZIP file
+    images.forEach(({ name, dataURL }) => {
+        const base64Data = dataURL.split(',')[1];
+        imagesFolder.file(name, base64Data, { base64: true });
+    });
 
-            // Function to show or hide the users window
-            function show_hide() {
-                if (uwindow.style.display === "block") {
-                    uwindow.style.display = "none";
-                } else {
-                    uwindow.style.display = "block";
-                }
-            }
-
-            // Function to handle window resize events
-            function handleResize() {
-                if (window.innerWidth > 900) {
-                    uwindow.style.display = "block";
-                } else {
-                    uwindow.style.display = "none";
-                }
-            }
-
-            // Function to handle mouse leave events on the users window
-            function handleMouseLeave() {
-                if (window.innerWidth <= 900) {
-                    uwindow.style.display = "none";
-                }
-            }
-
-            window.addEventListener('resize', handleResize);
-            window.addEventListener('load', handleResize);
-            uwindow.addEventListener('mouseleave', handleMouseLeave);
+    // Generate the ZIP file and trigger the download
+    zip.generateAsync({ type: "blob" }).then((content) => {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(content);
+        link.download = "images.zip";
+        link.click();
+    });
+});

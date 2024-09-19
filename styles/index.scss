@@ -137,6 +137,25 @@ main {
                 color: #ffffff;
             }
 
+            #download-zip-button {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 15px 2px;
+                cursor: pointer;
+                border-radius: 8px;
+                transition: background-color 0.3s ease;
+            }
+
+            #download-zip-button:hover {
+                background-color: #3e8e41; 
+            }
+
             div.users-list p {
                 font-size: 0.9rem;
                 letter-spacing: 0.5px;
